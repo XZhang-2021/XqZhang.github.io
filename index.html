@@ -32,6 +32,7 @@
           <a href="#publication">Publication</a>
           <a href="#cv">CV</a>
           <a href="#miscellanea">Miscellanea</a>
+          <button id="theme-toggle" class="theme-toggle" type="button" title="Toggle day / night" aria-label="Toggle day / night"></button>
         </div>
       </div>
     </div>
@@ -103,7 +104,7 @@
         </a>
         <br>
         <strong>Xuqi Zhang</strong>,
-        <a href="https://example.com/coauthor">Coauthor Name</a>
+        Coauthor Name
         <br>
         <em>Journal / Conference Name</em>, vol. X, 2026
         <br>
@@ -121,8 +122,8 @@
         </a>
         <br>
         <strong>Xuqi Zhang</strong>,
-        <a href="https://www.durham.ac.uk/staff/lian-gan/">Lian Gan</a>,
-        <a href="https://faculty.sustech.edu.cn/liuy/en/">Yu Liu</a>
+        Lian Gan,
+        Yu Liu
         <br>
         <em>Journal of Fluid Mechanics</em>, vol. 1026, 2026
         <br>
@@ -139,10 +140,10 @@
             <td style="padding:20px;width:100%;vertical-align:middle">
               <h2 id="cv" class="anchor">CV</h2>
               <div style="margin-top:15px;">
-                <iframe src="data/xqzhang_CV_2024_11.pdf#view=FitH" title="CV"
+                <iframe src="data/xqzhang_CV_2026_06.pdf#view=FitH" title="CV"
                         style="width:100%;aspect-ratio:8.5 / 11;border:1px solid rgba(128,128,128,0.35);border-radius:6px;">
                 </iframe>
-                <p style="margin-top:6px;"><a href="data/xqzhang_CV_2024_11.pdf">Open CV in a new tab</a></p>
+                <p style="margin-top:6px;"><a href="data/xqzhang_CV_2026_06.pdf">Open CV in a new tab</a></p>
               </div>
             </td>
           </tr>
@@ -158,23 +159,51 @@
 
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
-              <!-- <td style="padding:20px;width:33%;vertical-align:top;text-align:center">
-                <a href="images/Miscellanea/example.jpg"><img src="images/Miscellanea/example.jpg" style="width:100%;border-radius:8px;" alt="Example photo"></a>
-                <p>Example caption for this photo.</p>
-              </td> -->
-              <td style="padding:20px;width:33%;vertical-align:top;text-align:center">
-                <a href="images/Miscellanea/WholeRock.jpg"><img src="images/Miscellanea/WholeRock.jpg" style="width:100%;border-radius:8px;" alt="Whole Rock"></a>
-                <p>Standing before a giant whole rock.</p>
-              </td>
-              <td style="padding:20px;width:33%;vertical-align:top;text-align:center">
-                <a href="images/Miscellanea/GorgeousSky.jpg"><img src="images/Miscellanea/GorgeousSky.jpg" style="width:100%;border-radius:8px;" alt="Gorgeous Sky"></a>
-                <p>A gorgeous sky.</p>
-              </td>
-              <td style="padding:20px;width:33%;vertical-align:top;text-align:center">
-                <a href="images/Miscellanea/LifeIsEnjoySunshine.jpg"><img src="images/Miscellanea/LifeIsEnjoySunshine.jpg" style="width:100%;border-radius:8px;" alt="Life Is to Enjoy Sunshine"></a>
-                <p>Life is to enjoy the sunshine.</p>
-              </td>
-            </tr>
+            <td style="padding:0px 20px 20px 20px;width:100%;vertical-align:middle">
+              <div id="misc-list" style="overflow-x:hidden;overflow-y:auto;box-sizing:border-box;border:1px solid rgba(128,128,128,0.35);border-radius:6px;padding:10px;">
+                <!-- <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/example.jpg"><img src="images/Miscellanea/example.jpg" style="width:100%;border-radius:8px;" alt="Example photo"></a>
+                  <p>Example caption for this photo.</p>
+                </div> -->
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/WholeRock.jpg"><img src="images/Miscellanea/WholeRock.jpg" style="width:100%;border-radius:8px;" alt="Whole Rock"></a>
+                  <p>Standing before a giant whole rock.</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/GorgeousSky.jpg"><img src="images/Miscellanea/GorgeousSky.jpg" style="width:100%;border-radius:8px;" alt="Gorgeous Sky"></a>
+                  <p>A gorgeous sky.</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/LifeIsEnjoySunshine.jpg"><img src="images/Miscellanea/LifeIsEnjoySunshine.jpg" style="width:100%;border-radius:8px;" alt="Life Is to Enjoy Sunshine"></a>
+                  <p>Life is to enjoy the sunshine.</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/RockBed.jpg"><img src="images/Miscellanea/RockBed.jpg" style="width:100%;border-radius:8px;" alt="Rock Bed"></a>
+                  <p>Resting on a bed of rocks.</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/GreetingFromLonghorn.jpg"><img src="images/Miscellanea/GreetingFromLonghorn.jpg" style="width:100%;border-radius:8px;" alt="Greeting From Longhorn"></a>
+                  <p>Greeting from a Longhorn!</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/HappyChineseNewYear.jpg"><img src="images/Miscellanea/HappyChineseNewYear.jpg" style="width:100%;border-radius:8px;" alt="Happy Chinese New Year"></a>
+                  <p>Happy Chinese New Year!</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/LookMyEyes!.jpg"><img src="images/Miscellanea/LookMyEyes!.jpg" style="width:100%;border-radius:8px;" alt="Look My Eyes"></a>
+                  <p>Look into my eyes!</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/水月观音InBoston.jpg"><img src="images/Miscellanea/水月观音InBoston.jpg" style="width:100%;border-radius:8px;" alt="Water-Moon Guanyin in Boston"></a>
+                  <p>水月观音 (Water-Moon Guanyin) in Boston.</p>
+                </div>
+                <div class="misc-item" style="width:33.333%;box-sizing:border-box;padding:10px;text-align:center;">
+                  <a href="images/Miscellanea/Virginia.jpg"><img src="images/Miscellanea/Virginia.jpg" style="width:100%;border-radius:8px;" alt="Virginia"></a>
+                  <p>A trip to Virginia.</p>
+                </div>
+              </div>
+            </td>
+          </tr>
           </tbody></table>
           
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -194,32 +223,119 @@
     </table>
     <script type="text/javascript">
       (function () {
-        function applyTheme() {
+        var SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>';
+        var MOON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>';
+        var toggle = document.getElementById('theme-toggle');
+
+        function readSaved() {
+          try { return localStorage.getItem('theme'); } catch (e) { return null; }
+        }
+        function save(theme) {
+          try { localStorage.setItem('theme', theme); } catch (e) {}
+        }
+        function autoTheme() {
           var hour = new Date().getHours();
-          var isDay = hour >= 7 && hour < 19;
-          document.body.classList.toggle('dark', !isDay);
+          return (hour >= 7 && hour < 19) ? 'light' : 'dark';
+        }
+        function applyTheme() {
+          // A manual choice (saved) always wins over the time-based default.
+          var theme = readSaved() || autoTheme();
+          var isDark = theme === 'dark';
+          document.body.classList.toggle('dark', isDark);
+          if (toggle) toggle.innerHTML = isDark ? SUN : MOON;
+        }
+        if (toggle) {
+          toggle.addEventListener('click', function () {
+            var next = document.body.classList.contains('dark') ? 'light' : 'dark';
+            save(next);
+            applyTheme();
+          });
         }
         applyTheme();
-        // Re-check periodically so the theme flips if the page stays open across the day/night boundary.
+        // Re-check periodically so the theme flips if the page stays open across the day/night
+        // boundary (only matters when the user hasn't made a manual choice).
         setInterval(applyTheme, 60 * 1000);
 
-        // Make the news box show the first 6 items; the rest are reachable by scrolling.
-        function sizeNews() {
-          var list = document.getElementById('news-list');
+        // Cap a scroll box to show the first `visible` items; the rest are reachable by scrolling.
+        function sizeBox(listId, itemSelector, visible) {
+          var list = document.getElementById(listId);
           if (!list) return;
-          var items = list.querySelectorAll('.news-item');
-          if (items.length <= 6) {
+          var items = list.querySelectorAll(itemSelector);
+          if (items.length <= visible) {
             list.style.maxHeight = '';
             return;
           }
           var padBottom = 10;
-          var height = items[5].getBoundingClientRect().bottom
+          var height = items[visible - 1].getBoundingClientRect().bottom
                      - list.getBoundingClientRect().top
                      + padBottom;
           list.style.maxHeight = height + 'px';
         }
-        sizeNews();
-        window.addEventListener('resize', sizeNews);
+
+        // Masonry layout for Miscellanea: drop each photo into the currently shortest column
+        // so photos of different aspect ratios pack tightly with no ragged gaps.
+        function layoutMisc() {
+          var box = document.getElementById('misc-list');
+          if (!box) return;
+          var items = box.querySelectorAll('.misc-item');
+          if (!items.length) return;
+
+          var cs = getComputedStyle(box);
+          var padL = parseFloat(cs.paddingLeft) || 0;
+          var padR = parseFloat(cs.paddingRight) || 0;
+          var padT = parseFloat(cs.paddingTop) || 0;
+          var inner = box.clientWidth - padL - padR;
+          var cols = inner < 360 ? 1 : (inner < 560 ? 2 : 3);
+          var gap = 10;
+          var colW = (inner - gap * (cols - 1)) / cols;
+          var heights = [];
+          for (var c = 0; c < cols; c++) heights.push(0);
+
+          box.style.position = 'relative';
+          box.style.display = 'block';
+
+          var visibleBottom = 0; // bottom edge of the first 6 photos, for the scroll cap
+          for (var i = 0; i < items.length; i++) {
+            var it = items[i];
+            it.style.position = 'absolute';
+            it.style.boxSizing = 'border-box';
+            it.style.margin = '0';
+            it.style.padding = '0';
+            it.style.width = colW + 'px';
+
+            var min = 0;
+            for (var k = 1; k < cols; k++) if (heights[k] < heights[min]) min = k;
+            var x = padL + min * (colW + gap);
+            var y = padT + heights[min];
+            it.style.left = x + 'px';
+            it.style.top = y + 'px';
+
+            var bottom = y + it.offsetHeight;
+            heights[min] += it.offsetHeight + gap;
+            if (i < 3 && bottom > visibleBottom) visibleBottom = bottom;
+          }
+
+          var contentH = padT + Math.max.apply(null, heights);
+          box.style.height = contentH + 'px';
+          // Show roughly the first 3 photos; the rest scroll into view.
+          box.style.maxHeight = items.length > 3 ? (visibleBottom + 10) + 'px' : '';
+        }
+
+        function sizeBoxes() {
+          sizeBox('news-list', '.news-item', 6);   // News: first 6 entries
+          layoutMisc();                             // Miscellanea: masonry packing
+        }
+        sizeBoxes();
+        window.addEventListener('resize', sizeBoxes);
+        // Photos may shift heights as they finish loading, so re-measure then too.
+        window.addEventListener('load', sizeBoxes);
+        var miscImgs = document.querySelectorAll('#misc-list img');
+        for (var m = 0; m < miscImgs.length; m++) {
+          if (!miscImgs[m].complete) {
+            miscImgs[m].addEventListener('load', layoutMisc);
+            miscImgs[m].addEventListener('error', layoutMisc);
+          }
+        }
       })();
     </script>
   </body>
