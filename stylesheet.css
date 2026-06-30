@@ -63,15 +63,84 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-a {
-  color: #1772d0;
-  text-decoration: none;
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --link: #bf5700;
+  --link-hover: #8c4000;
 }
 
-a:focus,
-a:hover {
-  color: #f09228;
-  text-decoration: none;
+body.dark {
+  --bg: #15171a;
+  --fg: #e6e6e6;
+  --link: #ff9e4a;
+  --link-hover: #ffc080;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color .3s ease, color .3s ease;
+  padding-top: 48px;
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--bg);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+  transition: background-color .3s ease;
+}
+
+.topbar-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-left a,
+.topbar-right a {
+  margin: 0 8px;
+  font-weight: bold;
+  color: #bf5700;
+}
+
+.topbar-left a:hover,
+.topbar-right a:hover,
+.topbar-left a:focus,
+.topbar-right a:focus {
+  color: #8c4000;
+}
+
+.topbar-left a:first-child {
+  margin-left: 0;
+}
+
+.topbar-right a:last-child {
+  margin-right: 0;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-left svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  display: block;
+}
+
+.anchor {
+  scroll-margin-top: 60px;
 }
 
 body,
@@ -82,6 +151,18 @@ p,
 a {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
+  color: var(--fg);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: var(--link-hover);
+  text-decoration: none;
 }
 
 strong {
@@ -91,8 +172,8 @@ strong {
 
 h2 {
   margin: 0;
-  font-weight: normal;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 22px;
 }
 
@@ -105,7 +186,7 @@ h2 {
 .name {
   padding-top: 20px;
   margin: 0;
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 32px;
 }
 
