@@ -72,6 +72,8 @@ html {
   --fg: #1a1a1a;
   --link: #bf5700;
   --link-hover: #8c4000;
+  --panel: #f6f6f4;
+  --underline: rgba(191, 87, 0, 0.4);
 }
 
 body.dark {
@@ -79,13 +81,15 @@ body.dark {
   --fg: #e6e6e6;
   --link: #ff9e4a;
   --link-hover: #ffc080;
+  --panel: #1e2126;
+  --underline: rgba(255, 158, 74, 0.4);
 }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
   transition: background-color .3s ease, color .3s ease;
-  padding-top: 48px;
+  padding-top: var(--topbar-h, 48px);
 }
 
 #topbar {
@@ -114,6 +118,7 @@ body {
   margin: 0 8px;
   font-weight: bold;
   color: #bf5700;
+  text-decoration: none;
 }
 
 .topbar-left a:hover,
@@ -121,6 +126,12 @@ body {
 .topbar-left a:focus,
 .topbar-right a:focus {
   color: #8c4000;
+}
+
+.topbar-right a.active {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 .topbar-left a:first-child {
@@ -167,7 +178,7 @@ body {
 }
 
 .anchor {
-  scroll-margin-top: 60px;
+  scroll-margin-top: calc(var(--topbar-h, 48px) + 14px);
 }
 
 body,
@@ -181,14 +192,26 @@ a {
   color: var(--fg);
 }
 
+/* Body links stay in the text colour and only reveal the accent on hover,
+   so prose reads calmly; the orange is a hint via a subtle underline. */
 a {
-  color: var(--link);
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color .15s ease, text-decoration-color .15s ease;
 }
 
 a:focus,
 a:hover {
-  color: var(--link-hover);
+  color: var(--link);
+  text-decoration-color: currentColor;
+}
+
+/* Links wrapping a paper title or an image shouldn't carry a text underline. */
+a:has(.papertitle),
+a:has(img) {
   text-decoration: none;
 }
 
@@ -198,9 +221,9 @@ strong {
 }
 
 h2 {
-  margin: 0;
+  margin: 0 0 14px 0;
   font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 22px;
 }
 
@@ -213,7 +236,7 @@ h2 {
 .name {
   padding-top: 20px;
   margin: 0;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 32px;
 }
 
@@ -240,4 +263,43 @@ h2 {
 
 span.highlight {
   background-color: #ffffd0;
+}
+
+@media (max-width: 600px) {
+  /* Stack the two nav groups so the bar doesn't overflow on phones.
+     Body padding-top is set in JS from the bar's real height. */
+  .topbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 8px 16px;
+  }
+
+  .topbar-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .topbar-left a:first-child {
+    margin-left: 0;
+  }
+
+  /* Let the intro stack: text above, photo below, each full width. */
+  #about td {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 16px 0 16px;
+  }
+
+  #about td + td {
+    padding-top: 0;
+    padding-bottom: 16px;
+    text-align: center;
+  }
+
+  #about img {
+    max-width: 220px;
+  }
 }
