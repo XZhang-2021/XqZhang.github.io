@@ -29,18 +29,22 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
-          cache-dependency-path: scripts/calendar-requirements.txt
-      - name: Install calendar parser
-        run: python -m pip install -r scripts/calendar-requirements.txt
-      - name: Check privacy, recurrence, and timezone handling
+          cache-dependency-path: |
+            scripts/calendar-requirements.txt
+            scripts/blog-requirements.txt
+      - name: Install website build tools
+        run: python -m pip install -r scripts/calendar-requirements.txt -r scripts/blog-requirements.txt
+      - name: Check calendar and blog generation
         run: python -m unittest discover -s tests
-      - name: Check calendar display and navigation
-        run: node --test tests/availability.test.cjs
+      - name: Check calendar and blog interactions
+        run: node --test tests/availability.test.cjs tests/blog.test.cjs
       - name: Prepare static website
         run: |
           mkdir -p _site
           cp *.html *.css *.js _site/
           cp -R images data _site/
+      - name: Build blog from Markdown posts
+        run: python scripts/build_blog.py --output _site
       - name: Refresh busy-only calendar
         env:
           OUTLOOK_ICS_URL: ${{ secrets.OUTLOOK_ICS_URL }}
