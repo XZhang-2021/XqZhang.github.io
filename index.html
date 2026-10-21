@@ -22,7 +22,7 @@
 
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+
   </head>
 
   <body>
@@ -43,6 +43,7 @@
           <a href="#about">About</a>
           <a href="#news">News</a>
           <a href="#publication">Publication</a>
+          <a href="#availability">Availability</a>
           <a href="cv.html">CV</a>
           <a href="miscellanea.html">Miscellanea</a>
           <button id="theme-toggle" class="theme-toggle" type="button" title="Toggle day / night" aria-label="Toggle day / night"></button>
@@ -99,7 +100,7 @@
               </td>
             </tr>
           </tbody></table>
-          		
+
 	        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
     <!-- <tr>
@@ -139,21 +140,46 @@
       </td>
     </tr>
           </tbody></table>
-		
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <section aria-labelledby="availability">
+                  <h2 id="availability" class="anchor">Availability</h2>
+                  <p class="availability-intro">My busy times, in Austin time (America/Chicago).</p>
+                  <div class="availability-panel">
+                    <div class="availability-toolbar">
+                      <p id="availability-week" class="availability-week" aria-live="polite"></p>
+                      <div class="availability-controls" role="group" aria-label="Choose a week">
+                        <button id="availability-prev" type="button" aria-label="Previous week" disabled>&larr;</button>
+                        <button id="availability-today" type="button" disabled>This week</button>
+                        <button id="availability-next" type="button" aria-label="Next week" disabled>&rarr;</button>
+                      </div>
+                    </div>
+                    <p id="availability-status" class="availability-status" role="status">Loading busy times&hellip;</p>
+                    <div id="availability-days" class="availability-days"></div>
+                    <noscript><p>Enable JavaScript to view my busy times.</p></noscript>
+                  </div>
+                </section>
+              </td>
+            </tr>
+          </tbody></table>
+
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
               <td style="padding:0px">
                 <br>
                 <p style="text-align:right;font-size:small;">
-                  	Copyright © 2026 Made by Xuqi Zhang.
+                  Copyright © 2026 Made by Xuqi Zhang.
                 </p>
               </td>
             </tr>
           </tbody></table>
-		
+
         </td>
       </tr>
     </table>
+    <script src="availability.js" defer></script>
     <script type="text/javascript">
       (function () {
         var SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>';

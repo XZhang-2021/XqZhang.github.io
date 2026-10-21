@@ -261,6 +261,149 @@ h2 {
   -webkit-transition: opacity .2s ease-in-out;
 }
 
+.availability-intro {
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.availability-panel {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.availability-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.availability-week {
+  margin: 0;
+  font-weight: bold;
+}
+
+.availability-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.availability-controls button {
+  min-width: 36px;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--underline);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.availability-controls button:hover:not(:disabled) {
+  border-color: var(--link);
+  color: var(--link);
+}
+
+.availability-controls button:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.availability-controls button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+.availability-status {
+  margin: 12px 0 16px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.availability-stale {
+  color: var(--link);
+}
+
+.availability-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.availability-day {
+  min-width: 0;
+}
+
+.availability-day-heading {
+  margin: 0 0 10px;
+  padding: 8px 2px;
+  border-bottom: 2px solid var(--underline);
+  font-size: 12px;
+}
+
+.availability-day.is-today .availability-day-heading {
+  border-color: var(--link);
+  color: var(--link);
+}
+
+.availability-weekday,
+.availability-date,
+.availability-time,
+.availability-slot strong {
+  display: block;
+}
+
+.availability-date {
+  margin-top: 4px;
+}
+
+.availability-slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.availability-slot {
+  margin-bottom: 8px;
+  padding: 8px 6px;
+  border-left: 3px solid var(--link);
+  border-radius: 3px;
+  background: var(--bg);
+}
+
+.availability-slot strong {
+  font-size: 12px;
+}
+
+.availability-time {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.availability-empty {
+  margin: 0;
+  padding: 0 2px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .availability-days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .availability-time {
+    font-size: 12px;
+  }
+}
+
 span.highlight {
   background-color: #ffffd0;
 }
