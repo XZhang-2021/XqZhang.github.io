@@ -12,6 +12,8 @@
   var week;
   var currentWeek;
   var dayMs = 86400000;
+  var startMinute = 9 * 60;
+  var endMinute = 17 * 60;
   var dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
   var weekdayFormat = new Intl.DateTimeFormat('en-US', { weekday: 'short', timeZone: 'UTC' });
 
@@ -33,6 +35,13 @@
     node.textContent = text;
     return node;
   }
+  function minutes(value) {
+    var parts = value.split(':');
+    return Number(parts[0]) * 60 + Number(parts[1]);
+  }
+  function timeLabel(value) {
+    return String(Math.floor(value / 60)).padStart(2, '0') + ':' + String(value % 60).padStart(2, '0');
+  }
 
   function render() {
     var today = austinToday();
@@ -41,7 +50,7 @@
     var updated = new Intl.DateTimeFormat('en-US', {
       timeZone: data.timeZone, month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
     }).format(new Date(data.updatedAt));
-    weekLabel.textContent = dateFormat.format(week) + ' – ' + dateFormat.format(addDays(week, 6)) + ', ' + addDays(week, 6).getUTCFullYear();
+    weekLabel.textContent = dateFormat.format(week) + ' – ' + dateFormat.format(addDays(week, 4)) + ', ' + addDays(week, 4).getUTCFullYear();
     status.textContent = stale
       ? 'Calendar update delayed · Last updated ' + updated + '. Please email me to confirm availability.'
       : 'Busy times only · Updated ' + updated;
@@ -52,7 +61,19 @@
       || dateKey(currentWeek) < data.rangeStart || dateKey(currentWeek) >= data.rangeEnd;
     container.replaceChildren();
 
-    for (var i = 0; i < 7; i++) {
+    var hours = element('div', 'availability-hours', '');
+    hours.setAttribute('aria-hidden', 'true');
+    hours.append(element('div', 'availability-hours-heading', ''));
+    var scale = element('div', 'availability-scale', '');
+    for (var hour = 9; hour <= 17; hour++) {
+      var tick = element('span', 'availability-hour', timeLabel(hour * 60));
+      tick.style.top = ((hour * 60 - startMinute) / (endMinute - startMinute) * 100) + '%';
+      scale.append(tick);
+    }
+    hours.append(scale);
+    container.append(hours);
+
+    for (var i = 0; i < 5; i++) {
       var day = addDays(week, i);
       var key = dateKey(day);
       var column = element('section', 'availability-day', '');
@@ -65,18 +86,30 @@
       heading.append(date);
       column.append(heading);
       var slots = data.days[key];
-      if (!slots || !slots.length) {
-        column.append(element('p', 'availability-empty', stale || !slots ? 'No current data' : 'No busy times'));
-      } else {
-        var list = element('ul', 'availability-slots', '');
-        slots.forEach(function (slot) {
-          var item = element('li', 'availability-slot', '');
-          item.append(element('strong', '', 'Busy'));
-          item.append(element('span', 'availability-time',
-            slot.start === '00:00' && slot.end === '24:00' ? 'All day' : slot.start + '–' + slot.end));
-          list.append(item);
-        });
-        column.append(list);
+      var list = element('ul', 'availability-slots', '');
+      list.setAttribute('aria-label', 'Busy times for ' + weekdayFormat.format(day) + ', ' + dateFormat.format(day));
+      (slots || []).forEach(function (slot) {
+        // Clip events to the visible workday without changing the source data.
+        var start = Math.max(startMinute, minutes(slot.start));
+        var end = Math.min(endMinute, minutes(slot.end));
+        if (end <= start) return;
+        var duration = end - start;
+        var item = element('li', 'availability-slot', '');
+        var timeRange = timeLabel(start) + '–' + timeLabel(end);
+        item.style.top = ((start - startMinute) / (endMinute - startMinute) * 100) + '%';
+        item.style.height = (duration / (endMinute - startMinute) * 100) + '%';
+        item.tabIndex = 0;
+        item.title = 'Busy · ' + timeRange + ' (Austin time)';
+        item.setAttribute('aria-label', item.title);
+        if (duration < 45) item.classList.add('is-short');
+        if (duration < 20) item.classList.add('is-tiny');
+        item.append(element('strong', '', 'Busy'));
+        item.append(element('span', 'availability-time', timeRange));
+        list.append(item);
+      });
+      column.append(list);
+      if (stale || !slots) {
+        column.classList.add('is-stale');
       }
       container.append(column);
     }

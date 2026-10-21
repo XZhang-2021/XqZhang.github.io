@@ -3,7 +3,9 @@
 ## Busy-only Outlook calendar
 
 The homepage's Availability section reads `data/availability.json`, which contains
-only occupied time intervals in `America/Chicago`. Free and cancelled events are
+only occupied time intervals in `America/Chicago`. The display shows Monday–Friday,
+09:00–17:00 on a complete hourly grid; busy blocks are clipped to those hours.
+Free and cancelled events are
 excluded; tentative and out-of-office events are displayed as Busy. Recurring
 events, exceptions, all-day events, and daylight saving time are handled by the
 Python calendar parser. Event metadata and the original ICS are never saved to
