@@ -1,7 +1,7 @@
 # Xuqi Zhang — Personal Website
 
 Source code for my personal academic website, with my research interests,
-publications, CV, blog, and miscellanea.
+publications, CV, blog, and travel photo albums.
 
 Built with HTML, CSS, and JavaScript, and hosted on GitHub Pages.
 
@@ -17,6 +17,7 @@ Open http://localhost:8000 in your browser.
 
 For deployment and maintenance, see the [maintenance notes](docs/maintenance.md).
 For writing blog posts and adding tags, see the [blog guide](docs/blog.md).
+For adding trips, dates, and photos, see the [travel guide](docs/travel.md).
 
 ## Acknowledgments
 
